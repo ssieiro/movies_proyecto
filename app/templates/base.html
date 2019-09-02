@@ -1,0 +1,33 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <!--<link rel="stylesheet" href="./static/css/normalize.css">
+    <link rel="stylesheet" href="./static/css/skeleton.css">
+    <link rel="stylesheet" href="./static/css/styles.css">
+-->
+</head>
+<body>  
+    <div class="header">
+        <div class="container">
+            <h1>Movie searcher</h1>
+        </div>
+    </div>
+    <div class = "menu">
+        {% block menu %}{% endblock%}
+    </div>
+    <div class="container">
+    <!-- aquí no lleva menú en la home
+ <p class="menu">
+            <a href="./">Inicio</a> | <a href="/nuevacompra">Compra</a>
+        </p>
+    --> 
+        {% block body %}{% endblock%}
+    </div>
+    <footer class="container">
+        <p> &copy; 2019 - Sonia Sieiro </p>
+    </footer>
+</body>
+</html>
