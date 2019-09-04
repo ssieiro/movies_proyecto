@@ -3,6 +3,7 @@ from flask import render_template, request, redirect, url_for, flash
 
 import configparser, requests, json
 
+#para la llamada a la API
 config = configparser.ConfigParser()
 config.read('config.ini')
 
@@ -32,7 +33,7 @@ def detalle():
     return render_template('film.html', movieDetail=movieDetail, busquedaAnterior = busquedaAnterior)
     
 
-
+#Llama a la API por búsqueda
 def llamadaAPI(busqueda, pag='1'):
     url = movie_search.format(API_KEY, busqueda, pag)
     response = requests.get(url)
@@ -43,6 +44,7 @@ def llamadaAPI(busqueda, pag='1'):
     else:
         print('Se ha producido un error en la petición: ', response.status_code)
 
+#Llama a la API por id
 def llamadaAPIdetail(id):
     url = detail_search.format(API_KEY, id)
     response = requests.get(url)
@@ -54,10 +56,10 @@ def llamadaAPIdetail(id):
     else:
         print('Se ha producido un error en la petición: ', response.status_code)
 
-    #Llama con un format de la API_KEY, la palabra y el número de página
+    
 
 
 
 
-#print(prueba['Search'][1])
+
 

@@ -22,4 +22,5 @@ http://www.omdbapi.com/apikey.aspx
 
 API_KEY=[yourkey]
 movie_search=http://www.omdbapi.com/?apikey={}&s={}&{}
+detail_search=http://www.omdbapi.com/?apikey={}&i={}
 
