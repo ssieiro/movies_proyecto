@@ -4,12 +4,9 @@
 
 {% block menu %}
 <p class="menu">
-        <a href="./">Inicio</a> |
-        
-        <form action="/films" method="GET">
-                <input type="hidden" name="busqueda" value="{{busquedaAnterior}}">
-                <a href="./films" type="submit" name="Todas" value="Todas">Todas</a>
-        </form>
+        <a href="./">Inicio</a> | <form action="/films" method="GET">
+                <button name="busqueda" value="{{busquedaAnterior}}" type="submit" class="enlace_button">Todas</button>
+                </form>
 </p>
 {% endblock %}
 
