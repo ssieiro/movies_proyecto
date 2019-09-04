@@ -4,10 +4,15 @@
 
 {% block menu %}
 <p class="menu">
-        <a href="./">Inicio</a> | <a href="./films">Todas</a>
+        <a href="./">Inicio</a> |
+        
+        <form action="/films" method="GET">
+                <input type="hidden" name="busqueda" value="{{busquedaAnterior}}">
+                <a href="./films" type="submit" name="Todas" value="Todas">Todas</a>
+        </form>
 </p>
 {% endblock %}
 
 {% block body %} 
-<p>detalle pelicula</p>
+<p>{{movieDetail}}</p>
 {% endblock %}

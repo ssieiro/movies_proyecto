@@ -8,6 +8,8 @@ config.read('config.ini')
 
 API_KEY = config['DEFAULT']['API_KEY']
 movie_search = config['DEFAULT']['movie_search']
+detail_search = config['DEFAULT']['detail_search']
+
 
 @app.route ('/')
 def index():
@@ -16,16 +18,19 @@ def index():
 @app.route ('/films', methods=['GET'])
 def busqueda():
     if request.method == 'GET':
-        movies = llamadaAPI (request.values.get('busqueda'))
-        print(movies)
-    return render_template('films.html', movies = movies)
-    
+        busqueda = request.values.get('busqueda')
+        movies = llamadaAPI (busqueda)
+        return render_template('films.html', movies=movies, busqueda=busqueda)
 
 
-@app.route ('/film')
+@app.route ('/film', methods=['GET'])
 def detalle():
-    return render_template('film.html')
-    #print (request.values['busqueda'])
+    if request.method == 'GET':
+        id = request.values.get(request.values.get('ix'))
+        movieDetail = llamadaAPIdetail(id)
+        busquedaAnterior = request.values.get('busquedaAnterior')
+    return render_template('film.html', movieDetail=movieDetail, busquedaAnterior = busquedaAnterior)
+    
 
 
 def llamadaAPI(busqueda, pag='1'):
@@ -35,6 +40,17 @@ def llamadaAPI(busqueda, pag='1'):
     if response.status_code == 200:
         movies = json.loads(response.text)
         return movies
+    else:
+        print('Se ha producido un error en la petición: ', response.status_code)
+
+def llamadaAPIdetail(id):
+    url = detail_search.format(API_KEY, id)
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        detail = json.loads(response.text)
+        print(detail)
+        return detail
     else:
         print('Se ha producido un error en la petición: ', response.status_code)
 

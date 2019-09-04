@@ -6,5 +6,24 @@
 </p>
 {% endblock %}
 {% block body %} 
-<p>{{movies}}</p>
+<form action="/film" method="GET">
+<div class="films__maincontainer">
+
+        {% for i in range(10) %}
+        <div class="films__searchresult">
+
+                <img class="films__posterfilm" src="{{movies['Search'][i]['Poster']}}">
+                <p class="films__filmtittle">{{movies['Search'][i]['Title']}}</p>
+                <p>{{movies['Search'][i]['Year']}}</p>
+                <p>{{movies['Search'][i]['imdbID']}}</p>
+                <input type="hidden" name="{{ loop.index }}" value="{{movies['Search'][i]['imdbID']}}">
+                <input class="films_selector" type="radio" name="ix" value="{{ loop.index }}">
+        </div>
+        <input type="hidden" name="busquedaAnterior" value="{{busqueda}}">
+        {% endfor %}
+
+</div>
+<button name="Detalle" value="Detalle" type="submit" class="films_detailbutton">Ir a detalle</button>
+</form>
+<!--<p>{{movies}}</p>-->
 {% endblock %}
