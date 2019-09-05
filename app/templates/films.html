@@ -15,7 +15,6 @@
                 <img class="films__posterfilm" src="{{movies['Search'][i]['Poster']}}">
                 <p class="films__filmtittle">{{movies['Search'][i]['Title']}}</p>
                 <p>{{movies['Search'][i]['Year']}}</p>
-                <p>{{movies['Search'][i]['imdbID']}}</p>
                 <input type="hidden" name="{{ loop.index }}" value="{{movies['Search'][i]['imdbID']}}">
                 <input class="films_selector" type="radio" name="ix" value="{{ loop.index }}">
         </div>

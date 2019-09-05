@@ -10,6 +10,28 @@
 </p>
 {% endblock %}
 
-{% block body %} 
-<p>{{movieDetail}}</p>
+{% block body %}
+<div class="film__container">
+<div class="film__poster--div">
+        <img class="film__poster--image" src="{{movieDetail['Poster']}}">
+</div>
+<div class="film__information">
+        <div class="film__infotext">
+        <p class="film__information--Title">{{movieDetail['Title']}}</p>
+        <p class="film__information--Genre"><strong>Género:</strong><br/><br/>
+                {{movieDetail['Genre']}}</p>
+        <p class="film__information--Plot"><strong>Argumento:</strong><br/><br/>
+                {{movieDetail['Plot']}}</p>
+        <p class="film__information--Director"><strong>Director:</strong><br/><br/>
+                {{movieDetail['Director']}}</p>
+        <p class="film__information--Writer"><strong>Guionista:</strong><br/><br/>
+                {{movieDetail['Writer']}}</p>
+        <p class="film__information--Actors"><strong>Reparto:</strong><br/><br/>
+                {{movieDetail['Actors']}}</p>
+        </div>
+        <div>
+        <p class="film__information--Year">{{movieDetail['Year']}}</p>
+        </div>
+</div>
+</div>
 {% endblock %}

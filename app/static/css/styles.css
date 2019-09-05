@@ -1,3 +1,7 @@
+.bodye{
+    background: lightgray;
+}
+
 .films__maincontainer {
     display: grid;
     grid-gap: 1rem;
@@ -32,3 +36,89 @@
     margin-bottom: 1em;
 }
 
+.film__container{
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-rows: 100%;
+    grid-template-columns: 30% 70%;
+    background-color: grey;
+}
+
+
+.box img{
+    width: 100%;
+    height: auto;
+  }
+  @supports(object-fit: cover){
+      .box img{
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+      }
+  }
+
+.films__poster--div{
+    display: flex;
+    display: flex;
+    justify-content: center;
+    
+}
+.film__poster--div img{
+    width: 100%;
+  }
+  @supports(object-fit: cover){
+    .film__poster--div img{
+      object-fit: cover;
+      object-position: center center;
+    }
+}
+/* .film__poster--image{
+    display: flex;
+    padding: 1rem;
+    width: 90%;
+    align-self: center;
+} */
+
+.film__information{
+    background-color: transparent;
+    display: grid;
+    padding: 1rem;
+    width: 95%;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 100%;
+    /* grid-template-rows: 10% 10% 30% 10% 15% 10%;
+    grid-template-areas: "Title Year"
+                         "Genre None"
+                         "Plot None"
+                         "Director None"
+                         "Writer None"
+                         "Actors None";*/
+}
+
+.film__information--Title{
+    font-weight: bolder;
+    font-size: 25px;
+    align-self: center;
+    text-align: left;
+}
+.film__information--Year{
+    align-self: center;
+    text-align: right;
+    padding-right: 2rem;
+    font-size:25px;
+}
+.film__information--Genre{
+    align-self: center;
+}
+.film__information--Plot{
+    align-self: center;
+}
+.film__information--Director{
+    align-self: center;
+}
+.film__information--Writer{
+    align-self: center;
+}
+.film__information--Actors{
+    align-self: center;
+}

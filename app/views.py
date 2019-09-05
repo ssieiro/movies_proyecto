@@ -20,7 +20,6 @@ def index():
 def busqueda():
     if request.method == 'GET':
         busqueda = request.values.get('busqueda')
-        print (busqueda)
         movies = llamadaAPI (busqueda)
         return render_template('films.html', movies=movies, busqueda=busqueda)
 
@@ -52,7 +51,6 @@ def llamadaAPIdetail(id):
 
     if response.status_code == 200:
         detail = json.loads(response.text)
-        print(detail)
         return detail
     else:
         print('Se ha producido un error en la petición: ', response.status_code)
