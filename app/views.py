@@ -20,8 +20,25 @@ def index():
 def busqueda():
     if request.method == 'GET':
         busqueda = request.values.get('busqueda')
-        movies = llamadaAPI (busqueda)
-        return render_template('films.html', movies=movies, busqueda=busqueda)
+
+        if request.values.get('paginaAnterior') or request.values.get('paginaSiguiente'):
+            if request.values.get('paginaAnterior'):
+                pag = int(request.values.get('paginaAnterior')) -1
+            if request.values.get('paginaSiguiente'):
+                pag = int(request.values.get('paginaSiguiente')) +1
+            movies, pagActual = llamadaAPI (busqueda, pag) #envía si la página es distinta el valor pag a la funcion llamadaAPI
+        else:
+            movies, pagActual = llamadaAPI (busqueda) #Recibe la página actual y el json de la búsqueda
+        
+        pagActual = int(pagActual)
+        totalResults = int(movies['totalResults'])
+
+        if totalResults % 10 != 0: #nos devuelve el número de páginas
+            numPags = totalResults // 10 + 1
+        else:
+            numPags = totalResults // 10
+        numResultados = len(movies['Search']) #para que al llegar a la ultima pagina si son 3 resultados en lugar de 10 se maquete en función de eso
+        return render_template('films.html', movies=movies, busqueda=busqueda, numPags=numPags, pagActual=pagActual, numResultados=numResultados)
 
 
 @app.route ('/film', methods=['GET'])
@@ -33,14 +50,14 @@ def detalle():
     return render_template('film.html', movieDetail=movieDetail, busquedaAnterior = busquedaAnterior)
     
 
-#Llama a la API por búsqueda
+#Llama a la API por búsqueda y nos devuelve el json y la página actual de búsqueda
 def llamadaAPI(busqueda, pag='1'):
     url = movie_search.format(API_KEY, busqueda, pag)
     response = requests.get(url)
 
     if response.status_code == 200:
         movies = json.loads(response.text)
-        return movies
+        return movies, pag
     else:
         print('Se ha producido un error en la petición: ', response.status_code)
 

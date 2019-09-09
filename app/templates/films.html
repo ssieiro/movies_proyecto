@@ -8,8 +8,8 @@
 {% block body %} 
 <form action="/film" method="GET">
 <div class="films__maincontainer">
-
-        {% for i in range(10) %}
+<!--<p>genera un div por cada resultado de movies(normalmente 10 excepto en la última página)</p>-->
+        {% for i in range (numResultados) %}
         <div class="films__searchresult">
 
                 <img class="films__posterfilm" src="{{movies['Search'][i]['Poster']}}">
@@ -18,11 +18,20 @@
                 <input type="hidden" name="{{ loop.index }}" value="{{movies['Search'][i]['imdbID']}}">
                 <input class="films_selector" type="radio" name="ix" value="{{ loop.index }}">
         </div>
-        <input type="hidden" name="busquedaAnterior" value="{{busqueda}}">
         {% endfor %}
-
+        <input type="hidden" name="busquedaAnterior" value="{{busqueda}}">
 </div>
+<!--<p>si sale por aquí va al detalle</p>-->
 <button name="Detalle" value="Detalle" type="submit" class="films_detailbutton">Ir a detalle</button>
 </form>
-<!--<p>{{movies}}</p>-->
+<!--<p>si sale por aquí va a la siguiente página o a la anterior</p>-->
+<form action="/films" method="GET">
+        <input type="hidden" name="busqueda" value="{{busqueda}}">
+        {% if pagActual > 1 %}
+        <button name="paginaAnterior" value="{{pagActual}}" type="submit" class="films__button--nextpreview">páginaAnterior</button>
+        {% endif %}
+        {% if pagActual < numPags %}
+        <button name="paginaSiguiente" value="{{pagActual}}" type="submit" class="films__button--nextpreview">páginaSiguiente</button>
+        {% endif %}
+</form>
 {% endblock %}
