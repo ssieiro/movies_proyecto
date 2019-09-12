@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
-{% block title %} Movie searcher {% endblock %}
-{% block body %} 
-<h3>Introduzca la película a buscar</h3>
+{% block clasebody %}class="bodyindex" {% endblock%}
+{% block body %}
+
+<div class="index__container">
 <form action="/films" method="GET">
 <!--aqui quiero el icono de buscar-->
-    <input class="u-full-width" type="text" name="busqueda" id="busqueda" placeholder="busqueda">     
-    <button name="films" value="Buscar" type="submit" class="miboton  button-primary">Buscar</button>
+    <div class="index__subcontainer"><input class="index__input" type="text" name="busqueda" id="busqueda" placeholder="Introduzca película">     
+    <button name="films" value="Buscar" type="submit" class="index__button">Buscar</button></div>
 </form>
+</div>
+
 {% endblock %}

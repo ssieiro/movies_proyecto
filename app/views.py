@@ -20,8 +20,8 @@ def index():
 def busqueda():
     if request.method == 'GET':
         busqueda = request.values.get('busqueda')
-
-        if request.values.get('paginaAnterior') or request.values.get('paginaSiguiente'):
+        #si venimos desde pagina anterior o pagina siguiente aumenta el valor de pag para la búsqueda
+        if request.values.get('paginaAnterior') or request.values.get('paginaSiguiente'): 
             if request.values.get('paginaAnterior'):
                 pag = int(request.values.get('paginaAnterior')) -1
             if request.values.get('paginaSiguiente'):

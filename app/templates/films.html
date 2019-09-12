@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-{% block title %} Resultado búsqueda {% endblock %}
+{% block clasebody %} class="bodyfilms" {% endblock%}
 {% block menu %}
-<p class="menu">
-        <a href="./">Inicio</a>
-</p>
+<div class="menu">
+        <a class = "inicio" href="./">Inicio</a>
+</div>
 {% endblock %}
 {% block body %} 
 <form action="/film" method="GET">
@@ -12,26 +12,31 @@
         {% for i in range (numResultados) %}
         <div class="films__searchresult">
 
-                <img class="films__posterfilm" src="{{movies['Search'][i]['Poster']}}">
-                <p class="films__filmtittle">{{movies['Search'][i]['Title']}}</p>
-                <p>{{movies['Search'][i]['Year']}}</p>
+                <div class="films__postercontainer"><img class="films__poster" src="{{movies['Search'][i]['Poster']}}"></div>
+                <div class="films__information">
+                <p class="films__title">{{movies['Search'][i]['Title']}}</p>
+                <p class="films__year">{{movies['Search'][i]['Year']}}</p>
+                </div>
+
                 <input type="hidden" name="{{ loop.index }}" value="{{movies['Search'][i]['imdbID']}}">
-                <input class="films_selector" type="radio" name="ix" value="{{ loop.index }}">
+                <div class="films__div--buttons">
+                        <button name="ix" value="{{ loop.index }}" type="submit" class="films_detailbutton">Ir a detalle</button>
+                </div>
         </div>
         {% endfor %}
         <input type="hidden" name="busquedaAnterior" value="{{busqueda}}">
 </div>
 <!--<p>si sale por aquí va al detalle</p>-->
-<button name="Detalle" value="Detalle" type="submit" class="films_detailbutton">Ir a detalle</button>
+
 </form>
 <!--<p>si sale por aquí va a la siguiente página o a la anterior</p>-->
 <form action="/films" method="GET">
         <input type="hidden" name="busqueda" value="{{busqueda}}">
-        {% if pagActual > 1 %}
-        <button name="paginaAnterior" value="{{pagActual}}" type="submit" class="films__button--nextpreview">páginaAnterior</button>
+        <div class="films__div--buttons">{% if pagActual > 1 %}
+        <button name="paginaAnterior" value="{{pagActual}}" type="submit" class="films__button--nextpreview">página Anterior</button>
         {% endif %}
         {% if pagActual < numPags %}
-        <button name="paginaSiguiente" value="{{pagActual}}" type="submit" class="films__button--nextpreview">páginaSiguiente</button>
-        {% endif %}
+        <button name="paginaSiguiente" value="{{pagActual}}" type="submit" class="films__button--nextpreview">página Siguiente</button>
+        {% endif %}</div>
 </form>
 {% endblock %}

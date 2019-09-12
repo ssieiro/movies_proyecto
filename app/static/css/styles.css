@@ -1,40 +1,204 @@
-.bodye{
-    background: lightgray;
+.bodyindex{
+    background:#7EDFE0;
+    margin: 0px;
+}
+.bodyfilms{
+    background:white;
+    margin: 0px;
+}
+
+
+.footer{
+    background-color: #5B5B5B;
+    display: grid;
+    justify-content: center;
+    height: 10%;
+    align-content: center;
+}
+
+.copyright{
+    color: white;
+}
+
+.menu{
+    background-color:#FD9b79;
+    display: grid;
+    justify-content: left;
+    padding-left: 3em;
+    height: 5%;
+    align-content: center;
+}
+
+.inicio{
+    color: white;
+    text-decoration: none;
+    font-family: Montserrat;
+    font-size: larger;
+    font-weight: bold;
+}
+.index__container{
+    background-image:url('/static/css/images/fondo.jpg');
+    background-size: cover;
+    background-position-y: bottom;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 90%;
+    justify-items: left;
+    align-items: center;
+    max-width: 1920;
+    max-height: 1080;
+    margin: auto;
+}
+
+.index__subcontainer{
+    padding-left: 100px;
+}
+
+.index__input{
+    padding-left: 10px;
+    height: 40px;
+    width: 410px;
+    border-radius: 10px;
+    border: 1px solid #f5dfbd;
+    font-family: Montserrat;
+}
+
+.index__button{
+    font-family: Montserrat;
+    font-weight: 900;
+    color:white;
+    text-decoration: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 40px;
+    width: 150;
+    opacity: 1;
+    background-color: #FD9b79;
+    border: 1px solid #f5dfbd;
+
 }
 
 .films__maincontainer {
     display: grid;
     grid-gap: 1rem;
     min-height: 100vh;
-    grid-template-columns: repeat(5, 2fr);
-    grid-template-rows: repeat(2, 1fr); 
-    
+    grid-template-columns: repeat(5, 2fr); 
+    margin: 1em;
 }
 
 .films__searchresult{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 3fr 0.5fr 0.5fr;
     justify-items: center;
     align-items: self-start;
-    background-color: #C7C7C3;
+    border-radius: 15px;
 }
 
-.films__filmtittle{
-    display: flex;
-    padding: 1rem;
+.films__information{
+    display: grid;
+    padding-left: 1rem;
+    padding-right: 1rem;
     text-align: center;
+    color: #484646;
+    font-family: Montserrat;
+    height: 80px;
     
 }
-.films__posterfilm{
+
+.films__title{
+    display: flex;
+    margin-top: 0;
+    font-weight: bolder;
+    height: 40px;
+    align-items: center;
+}
+
+.films__year{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.films__postercontainer img{
+    width: 100%;
+  }
+  @supports(object-fit: cover){
+    .films__postercontainer img{
+      object-fit: cover;
+      object-position: center center;
+    }
+}
+.films__postercontainer{
+    display:flex;
+    padding:1rem;
+    height:370px;
+    width: 260px;
+
+}
+/*.films__poster{
     display: flex;
     padding:1rem;
     width:80%;
+    height: 340px;
 }
 
 .films_selector{
     margin-bottom: 1em;
+}*/
+
+
+
+
+.films__div--buttons{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+
 }
+
+.films_detailbutton:hover {
+    background-color: #FD9b79;
+    border: 1px solid #f5dfbd;
+    }
+
+.films_detailbutton{
+    font-family: Montserrat;
+    font-weight: 900;
+    color:white;
+    text-decoration: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 30px;
+    width: 110px;
+    opacity: 1;
+    background-color: #7EDFE0;
+    border: 1px solid #423789;
+
+}
+
+.films__button--nextpreview:hover {
+    background-color: #423789;
+    }
+
+.films__button--nextpreview{
+    font-family: Montserrat;
+    font-weight: 900;
+    color:white;
+    text-decoration: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 40px;
+    width: 150;
+    opacity: 1;
+    background-color: #7EDFE0;
+    border: 1px solid #423789;
+    margin: 10px;
+}
+
 
 .film__container{
     display: grid;
@@ -42,26 +206,6 @@
     grid-template-rows: 100%;
     grid-template-columns: 30% 70%;
     background-color: grey;
-}
-
-
-.box img{
-    width: 100%;
-    height: auto;
-  }
-  @supports(object-fit: cover){
-      .box img{
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-      }
-  }
-
-.films__poster--div{
-    display: flex;
-    display: flex;
-    justify-content: center;
-    
 }
 .film__poster--div img{
     width: 100%;
@@ -72,12 +216,6 @@
       object-position: center center;
     }
 }
-/* .film__poster--image{
-    display: flex;
-    padding: 1rem;
-    width: 90%;
-    align-self: center;
-} */
 
 .film__information{
     background-color: transparent;
@@ -86,13 +224,6 @@
     width: 95%;
     grid-template-columns: 70% 30%;
     grid-template-rows: 100%;
-    /* grid-template-rows: 10% 10% 30% 10% 15% 10%;
-    grid-template-areas: "Title Year"
-                         "Genre None"
-                         "Plot None"
-                         "Director None"
-                         "Writer None"
-                         "Actors None";*/
 }
 
 .film__information--Title{
