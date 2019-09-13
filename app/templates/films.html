@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block clasebody %} class="bodyfilms" {% endblock%}
 {% block menu %}
-<div class="menu">
+<div class="menufilms">
         <a class = "inicio" href="./">Inicio</a>
 </div>
 {% endblock %}
@@ -19,14 +19,19 @@
                 </div>
 
                 <input type="hidden" name="{{ loop.index }}" value="{{movies['Search'][i]['imdbID']}}">
-                <div class="films__div--buttons">
-                        <button name="ix" value="{{ loop.index }}" type="submit" class="films_detailbutton">Ir a detalle</button>
+                <!--<p>botón detalle con animación</p>--><!--<p>si sale por aquí va al detalle</p>-->
+                <div class="films__div--buttons"> 
+                        <button name="ix" value="{{ loop.index }}" type="submit" class="films__detailbutton"><span class="films__detailbutton-span">Detalle</span>
+                                <svg class="films__detailbutton-svg" width="13px" height="10px" viewBox="0 0 13 10">
+                                  <path d="M1,7 L11,7"></path>
+                                  <polyline points="8 4 12 7 8 10"></polyline>
+                                </svg></button>
                 </div>
         </div>
         {% endfor %}
         <input type="hidden" name="busquedaAnterior" value="{{busqueda}}">
 </div>
-<!--<p>si sale por aquí va al detalle</p>-->
+
 
 </form>
 <!--<p>si sale por aquí va a la siguiente página o a la anterior</p>-->

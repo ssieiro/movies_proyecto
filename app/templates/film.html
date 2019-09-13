@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block clasebody %} class="bodyfilms" {% endblock%}
 {% block menu %}
-<div class="menu">
-        <a class = "inicio" href="./">Inicio</a> | 
-        <form action="/films" method="GET"><button name="busqueda" value="{{busquedaAnterior}}" type="submit" class="enlace_button">Todas</button></form>
+<div class="menufilm">
+        <a class = "inicio" href="./">Inicio</a> <p class="film__menu-barra"> | </p>
+        <form action="/films" method="GET"><button name="busqueda" value="{{busquedaAnterior}}" type="submit" class="film__enlace--button">Todas</button></form>
         <!--<p>el botón envía el valor de búsqueda para usarla en la url de la búsqueda</p>-->
 </div>
 
