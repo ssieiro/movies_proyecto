@@ -13,20 +13,20 @@
 {% block body %}
 <div class="film__container">
 <div class="film__poster--div">
-        <img class="film__poster--image" src="{{movieDetail['Poster']}}">
+        <img src="{{movieDetail['Poster']}}">
 </div>
 <div class="film__information">
         <div class="film__infotext">
         <p class="film__information--Title">{{movieDetail['Title']}}</p>
-        <p class="film__information--Genre"><strong>Género:</strong><br/><br/>
+        <p><strong class="film__strong">Género:</strong><br/>
                 {{movieDetail['Genre']}}</p>
-        <p class="film__information--Plot"><strong>Argumento:</strong><br/><br/>
+        <p><strong class="film__strong">Argumento:</strong><br/>
                 {{movieDetail['Plot']}}</p>
-        <p class="film__information--Director"><strong>Director:</strong><br/><br/>
+        <p><strong class="film__strong">Director:</strong><br/>
                 {{movieDetail['Director']}}</p>
-        <p class="film__information--Writer"><strong>Guionista:</strong><br/><br/>
+        <p><strong class="film__strong">Guionista:</strong><br/>
                 {{movieDetail['Writer']}}</p>
-        <p class="film__information--Actors"><strong>Reparto:</strong><br/><br/>
+        <p><strong class="film__strong">Reparto:</strong><br/>
                 {{movieDetail['Actors']}}</p>
         </div>
         <div>

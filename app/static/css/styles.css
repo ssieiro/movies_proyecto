@@ -157,16 +157,6 @@
 
 }
 
-.film__poster--div img{
-    width: 100%;
-  }
-  @supports(object-fit: cover){
-    .film__poster--div img{
-      object-fit: cover;
-      object-position: center center;
-    }
-}
-
 .films__information{
     display: grid;
     padding-left: 1rem;
@@ -290,46 +280,55 @@
 
 .film__container{
     display: grid;
+    height: 60%;
+    width: 90%;
     grid-gap: 1rem;
     grid-template-rows: 100%;
     grid-template-columns: 30% 70%;
-    background-color: grey;
+    background-color: lightgrey;
+    margin: 100px;
+    border-radius: 30px;
+    box-shadow: 4px 4px 4px #BBBBBB;
 }
 
+.film__poster--div img{
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+  }
+  @supports(object-fit: cover){
+    .film__poster--div img{
+      object-fit: cover;
+      object-position: center center;
+    }
+}
 
 .film__information{
     background-color: transparent;
     display: grid;
-    padding: 1rem;
+    font-family: Montserrat;
+    color: #484646;
+    padding-left: 1.5rem;
     width: 95%;
     grid-template-columns: 70% 30%;
     grid-template-rows: 100%;
 }
-
+.film__infotext{
+    display: grid;
+    height: 80%
+}
 .film__information--Title{
     font-weight: bolder;
     font-size: 25px;
     align-self: center;
     text-align: left;
 }
+.film__strong{
+    color:black;
+}
 .film__information--Year{
     align-self: center;
     text-align: right;
     padding-right: 2rem;
     font-size:25px;
-}
-.film__information--Genre{
-    align-self: center;
-}
-.film__information--Plot{
-    align-self: center;
-}
-.film__information--Director{
-    align-self: center;
-}
-.film__information--Writer{
-    align-self: center;
-}
-.film__information--Actors{
-    align-self: center;
 }
