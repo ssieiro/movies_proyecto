@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
+{% block title %}Búsqueda{% endblock %}
 {% block clasebody %}class="bodyindex" {% endblock%}
 {% block body %}
 
-<div class="index__container">
-<form action="/films" method="GET">
-<!--aqui quiero el icono de buscar-->
-    <div class="index__subcontainer"><input class="index__input" type="text" name="busqueda" id="busqueda" placeholder="Introduzca película">     
-    <button name="films" value="Buscar" type="submit" class="index__button">Buscar</button></div>
-</form>
-</div>
+    <div class="index__container">
+    <form action="/films" method="GET">
+        <div class="index__subcontainer"><input class="index__input" type="text" name="busqueda" id="busqueda" placeholder="Introduzca película">     
+        <button name="films" value="Buscar" type="submit" class="index__button">Buscar</button></div>
+        {% if error %} <!--<p>si introducimos un campo vacío o una búsqueda sin resultados da un mensaje de error</p>-->
+        <p class="error_busqueda"> {{ error }} </p>
+        {% endif %}
+    </form>
+   
+    </div>
 
 {% endblock %}

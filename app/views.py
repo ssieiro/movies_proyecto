@@ -20,24 +20,27 @@ def index():
 def busqueda():
     if request.method == 'GET':
         busqueda = request.values.get('busqueda')
-        #si venimos desde pagina anterior o pagina siguiente aumenta el valor de pag para la búsqueda
-        if request.values.get('paginaAnterior') or request.values.get('paginaSiguiente'): 
+        #valida si venimos de index (por búsqueda) o de films (por los botones anterior o siguiente)
+        if request.values.get('paginaAnterior') or request.values.get('paginaSiguiente'):
             if request.values.get('paginaAnterior'):
                 pag = int(request.values.get('paginaAnterior')) -1
             if request.values.get('paginaSiguiente'):
                 pag = int(request.values.get('paginaSiguiente')) +1
-            movies, pagActual = llamadaAPI (busqueda, pag) #envía si la página es distinta el valor pag a la funcion llamadaAPI
+            movies, pagActual = llamadaAPI (busqueda, pag) #envía la página actual y la búsqueda
         else:
-            movies, pagActual = llamadaAPI (busqueda) #Recibe la página actual y el json de la búsqueda
-        
+            try:
+                movies, pagActual = llamadaAPI (busqueda) #envía solo búsqueda porque pag es 1
+            except ErrorBusqueda as e:
+                mensajeError = str(e)
+                return render_template('index.html', error=mensajeError)      
         pagActual = int(pagActual)
         totalResults = int(movies['totalResults'])
 
-        if totalResults % 10 != 0: #nos devuelve el número de páginas
+        if totalResults % 10 != 0: # calcula el número de páginas en función del total de resultados
             numPags = totalResults // 10 + 1
         else:
             numPags = totalResults // 10
-        numResultados = len(movies['Search']) #para que al llegar a la ultima pagina si son 3 resultados en lugar de 10 se maquete en función de eso
+        numResultados = len(movies['Search']) #envía el número de resultados para maquetar (si es la última pag puede ser distinto de 10)
         return render_template('films.html', movies=movies, busqueda=busqueda, numPags=numPags, pagActual=pagActual, numResultados=numResultados)
 
 
@@ -49,17 +52,24 @@ def detalle():
         busquedaAnterior = request.values.get('busquedaAnterior')
     return render_template('film.html', movieDetail=movieDetail, busquedaAnterior = busquedaAnterior)
     
+class ErrorBusqueda(Exception):
+    pass
+
 
 #Llama a la API por búsqueda y nos devuelve el json y la página actual de búsqueda
 def llamadaAPI(busqueda, pag='1'):
+    if busqueda == '': #si la busqueda está vacía lanza una excepción
+        raise ErrorBusqueda("Por favor, introduzca el nombre de una película")
     url = movie_search.format(API_KEY, busqueda, pag)
     response = requests.get(url)
 
+
     if response.status_code == 200:
         movies = json.loads(response.text)
-        return movies, pag
-    else:
-        print('Se ha producido un error en la petición: ', response.status_code)
+        if movies['Response'] == 'True':
+            return movies, pag
+        else:
+            raise ErrorBusqueda("Tu búsqueda no ha obtenido resultados, prueba con otro título") #si la búsqueda no da ningún resultado lanza una excepción
 
 #Llama a la API por id
 def llamadaAPIdetail(id):
