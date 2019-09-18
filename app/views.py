@@ -29,7 +29,8 @@ def busqueda():
             movies, pagActual = llamadaAPI (busqueda, pag) #envía la página actual y la búsqueda
         else:
             try:
-                movies, pagActual = llamadaAPI (busqueda) #envía solo búsqueda porque pag es 1
+                pag = int(request.values.get('pagActual'))
+                movies, pagActual = llamadaAPI (busqueda, pag) #envía solo búsqueda porque pag es 1
             except ErrorBusqueda as e:
                 mensajeError = str(e)
                 return render_template('index.html', error=mensajeError)      
@@ -47,10 +48,11 @@ def busqueda():
 @app.route ('/film', methods=['GET'])
 def detalle():
     if request.method == 'GET':
+        pagActual = pag = int(request.values.get('pagActual'))
         id = request.values.get(request.values.get('ix'))
         movieDetail = llamadaAPIdetail(id)
         busquedaAnterior = request.values.get('busquedaAnterior')
-    return render_template('film.html', movieDetail=movieDetail, busquedaAnterior = busquedaAnterior)
+    return render_template('film.html', movieDetail=movieDetail, busquedaAnterior = busquedaAnterior, pagActual=pagActual)
     
 class ErrorBusqueda(Exception):
     pass

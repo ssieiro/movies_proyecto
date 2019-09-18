@@ -4,7 +4,9 @@
 {% block menu %}
 <div class="menufilm">
         <a class = "inicio" href="./">Inicio</a> <p class="film__menu-barra"> | </p>
-        <form action="/films" method="GET"><button name="busqueda" value="{{busquedaAnterior}}" type="submit" class="film__enlace--button">Todas</button></form>
+        <form action="/films" method="GET"><button name="busqueda" value="{{busquedaAnterior}}" type="submit" class="film__enlace--button">Todas</button>
+        <input type="hidden" name="pagActual" value="{{pagActual}}">
+        </form>
         <!--<p>el botón envía el valor de búsqueda para usarla en la url de la búsqueda</p>-->
 </div>
 
