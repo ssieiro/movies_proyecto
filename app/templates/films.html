@@ -20,7 +20,8 @@
                 </div>
 
                 <input type="hidden" name="{{ loop.index }}" value="{{movies['Search'][i]['imdbID']}}">
-                <!--<p>botón detalle con animación</p>--><!--<p>si sale por aquí va al detalle</p>-->
+                <!--<p>botón detalle con animación</p>-->
+                <!--<p>si sale por aquí va al detalle</p>-->
                 <div class="films__div--buttons"> 
                         <button name="ix" value="{{ loop.index }}" type="submit" class="films__detailbutton"><span class="films__detailbutton-span">Detalle</span>
                                 <svg class="films__detailbutton-svg" width="13px" height="10px" viewBox="0 0 13 10">
@@ -30,15 +31,20 @@
                 </div>
         </div>
         {% endfor %}
+        <!--<p>Envía ocultos los parámetros necesarios</p>-->
         <input type="hidden" name="busquedaAnterior" value="{{busqueda}}">
         <input type="hidden" name="pagActual" value="{{pagActual}}">
+        <input type="hidden" name="searchType" value={{searchType}}>
 </div>
 
 
 </form>
 <!--<p>si sale por aquí va a la siguiente página o a la anterior</p>-->
 <form action="/films" method="GET">
+         <!--<p>Envía ocultos los parámetros necesarios</p>-->
         <input type="hidden" name="busqueda" value="{{busqueda}}">
+        <input type="hidden" name="pagActual" value="{{pagActual}}">
+        <input type="hidden" name="searchType" value={{searchType}}>
         <div class="films__div--buttons">{% if pagActual > 1 %}
         <button name="paginaAnterior" value="{{pagActual}}" type="submit" class="films__button--nextpreview">página Anterior</button>
         {% endif %}

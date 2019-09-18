@@ -4,12 +4,13 @@
 {% block menu %}
 <div class="menufilm">
         <a class = "inicio" href="./">Inicio</a> <p class="film__menu-barra"> | </p>
+        <!--<p>si sale por aqui volvemos a films, a la misma página y con la misma búsqueda</p>-->
         <form action="/films" method="GET"><button name="busqueda" value="{{busquedaAnterior}}" type="submit" class="film__enlace--button">Todas</button>
         <input type="hidden" name="pagActual" value="{{pagActual}}">
+        <input type="hidden" name="searchType" value="{{searchType}}">
         </form>
-        <!--<p>el botón envía el valor de búsqueda para usarla en la url de la búsqueda</p>-->
+        <!--<p>el botón envía el valor de búsqueda y el tipo a buscar</p>-->
 </div>
-
 {% endblock %}
 
 {% block body %}

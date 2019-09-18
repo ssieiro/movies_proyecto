@@ -1,3 +1,4 @@
+/*Colores de la página */
 :root{
     --azul: #7EDFE0;
     --naranja: #FD9b79;
@@ -98,6 +99,7 @@
 
 .index__subcontainer{
     padding-left: 100px;
+    display: flex;
 }
 
 .index__input{
@@ -108,7 +110,26 @@
     border: 1px solid var(--naranja-claro);
     font-family: Montserrat;
 }
+.index__div--selectbutton{
+    margin-left: 2px;
+    margin-right: 2px;
+    min-width: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid var(--naranja-claro);
+}
 
+.index__select--button{
+    display: flex;
+    background: transparent;
+    min-width: 200px;
+    height: 40px;
+    font-family: 'Montserrat';
+    color: #9E9E9E;
+    font-size: 12;
+    align-items: center;
+    border: 0px;
+}
 .index__button{
     font-family: Montserrat;
     font-weight: 900;

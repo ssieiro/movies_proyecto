@@ -9,14 +9,9 @@
     
 
 </head>
-<body {% block clasebody %}{% endblock%}>  
+<body {% block clasebody %}{% endblock%}>  <!--<p>la clase del body cambia en función de la página</p>-->
     {% block menu %}{% endblock%}
     <div>
-    <!-- aquí no lleva menú en la home
- <p class="menu">
-            <a href="./">Inicio</a> | <a href="/nuevacompra">Compra</a>
-        </p>
-    --> 
         {% block body %}{% endblock%}
     </div>
 </body>
