@@ -362,3 +362,38 @@
     padding-right: 2rem;
     font-size:25px;
 }
+
+@media (min-width: 200px) and (max-width: 1024px) {
+  
+    .index__container{
+        justify-items: center;
+    }
+    .index__subcontainer{
+        padding-left: 0px;
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        justify-content: center;
+        grid-gap: 10px;
+
+    }
+    .index__input{
+        padding-left: 10px;
+        height: 40px;
+        width: 425px;
+        border-radius: 10px;
+        border: 1px solid var(--naranja-claro);
+        font-family: Montserrat;
+    }
+    .index__div--selectbutton{
+        margin-left: 2px;
+        margin-right: 2px;
+        min-width: 420px;
+        background-color: #fff;
+        border-radius: 10px;
+        border: 1px solid var(--naranja-claro);
+}
+    .index__select--button{
+        width: 420px;
+    }
+
+}
