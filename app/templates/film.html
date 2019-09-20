@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %}Detalle{% endblock %}
-{% block clasebody %} class="bodyfilms" {% endblock%}
+{% block clasebody %} class="bodyfilm" {% endblock%}
 {% block menu %}
 <div class="menufilm">
         <a class = "inicio" href="./">Inicio</a> <p class="film__menu-barra"> | </p>
         <!--<p>si sale por aqui volvemos a films, a la misma página y con la misma búsqueda</p>-->
-        <form action="/films" method="GET"><button name="busqueda" value="{{busquedaAnterior}}" type="submit" class="film__enlace--button">Todas</button>
+        <form class="film__form" action="/films" method="GET"><button name="busqueda" value="{{busquedaAnterior}}" type="submit" class="film__enlace--button">Todas</button>
         <input type="hidden" name="pagActual" value="{{pagActual}}">
         <input type="hidden" name="searchType" value="{{searchType}}">
         </form>
@@ -38,3 +38,4 @@
 </div>
 </div>
 {% endblock %}
+{% block clasefooter %} class="footerfilm" {% endblock%}

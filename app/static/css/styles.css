@@ -9,19 +9,32 @@
 
 /*Body y footer */
 .bodyindex{
-    background var(--azul);
+    background: var(--azul);
     margin: 0px;
 }
 .bodyfilms{
-    background:white;
+    background: white;
     margin: 0px;
 }
+.bodyfilm{
+    background: white;
+    margin: 0px;
+    display: grid;
+    grid-template-rows: 5% 85% 10%;
+}
+
 .footer{
     background-color: var(--footer-color);
     display: grid;
     justify-content: center;
-    height: 10%;
     align-content: center;
+    height: 10%;
+}
+.footerfilm{
+    background-color: var(--footer-color);
+    display: grid;
+    justify-content: center;
+    align-content: center;  
 }
 .copyright{
     color: white;
@@ -54,7 +67,6 @@
     display: flex;
     justify-content: left;
     padding-left: 3em;
-    height: 5%;
     align-content: center;
 }
 .film__menu-barra{
@@ -66,7 +78,11 @@
     font-weight: bolder;
     font-size: larger;
 }
-
+.film__form{
+    margin-block-end: 0px;
+    align-content: center;
+    display: flex;
+}
 .film__enlace--button{
     display:flex;
     color: white;
@@ -76,7 +92,7 @@
     font-weight: bold;
     border: 0px;
     background: transparent;
-    margin-top: 9px;
+
  }
 
 /*página index.html*/
@@ -310,14 +326,11 @@
 
 .film__container{
     display: grid;
-    height: 60%;
-    width: 90%;
     grid-gap: 1rem;
-    grid-template-rows: 100%;
+    grid-template-rows: 600px;
     grid-template-columns: 30% 70%;
-    background-color: #ededed;;
+    background-color: #ededed;
     margin: 100px;
-    margin-bottom: 8%;
     border-radius: 30px;
 }
 
@@ -395,5 +408,30 @@
     .index__select--button{
         width: 420px;
     }
-
+    .error_busqueda{
+        padding-left: 0px;
+    }
+    .film__container{
+        grid-gap: 0px;
+        grid-template-rows: 0% 100%;
+        grid-template-columns: 100%;
+        margin: 20px;
+        padding: 20px;
+    }
+    .film__poster--div{
+        width: 0px;
+    }
+    .film__information{
+        font-size: 10px;
+    }
+    .film__infotext {
+        display: grid;
+        height: 100%;
+    }
+    .film__information--Title {
+        font-size: 15px;
+    }
+    .film__information--Year {
+        font-size: 15px;
+    }
 }

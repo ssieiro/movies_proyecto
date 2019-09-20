@@ -42,7 +42,12 @@ def busqueda():
         else:
             numPags = totalResults // 10
         numResultados = len(movies['Search'])
-        return render_template('films.html', movies=movies, busqueda=busqueda, numPags=numPags, pagActual=pagActual, searchType=searchType, numResultados=numResultados)
+        return render_template('films.html', movies=movies,
+                                             busqueda=busqueda,
+                                             numPags=numPags,
+                                             pagActual=pagActual,
+                                             searchType=searchType,
+                                             numResultados=numResultados)
 
 
 @app.route ('/film', methods=['GET'])
